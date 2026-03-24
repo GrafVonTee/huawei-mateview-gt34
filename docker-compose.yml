@@ -2,16 +2,25 @@ services:
   trainer:
     build:
       context: .
-      dockerfile: Dockerfile.trainer
+      dockerfile: dockerfiles/Dockerfile.trainer
     entrypoint: ""
     volumes:
       - ".:/workspace"
-    command: ["python", "run/toy_train.py"]
+    command: ["shell/train_model.sh"]
 
   inference:
     build:
       context: .
-      dockerfile: Dockerfile.vllm
+      dockerfile: dockerfiles/Dockerfile.vllm
     volumes:
-      - ".:/playground"
-    command: ["python", "run/toy_eval.py"]
+      - ".:/workspace"
+    command: ["shell/eval_model.sh"]
+
+  notebook:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.notebook
+    volumes:
+      - ".:/app"
+    ports:
+      - "8889:8888"

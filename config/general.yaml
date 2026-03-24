@@ -1,0 +1,9 @@
+environment:
+  model_dir: "models"
+  data_dir: "data"
+  log_dir: "logs"
+
+model:
+  name: "Qwen/Qwen2.5-0.5B"
+  path: "./models/Qwen2.5-0.5b"
+  torch_dtype: "bfloat16"

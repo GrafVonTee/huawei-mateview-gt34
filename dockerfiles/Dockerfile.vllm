@@ -3,7 +3,7 @@ FROM vllm/vllm-openai:latest
 RUN pip install -r requirements.txt --no-cache-dir
 RUN pip install "lm_eval[hf,vllm]" --no-cache-dir
 
-WORKDIR /playground
+WORKDIR /workspace
 ENTRYPOINT []
 
 CMD ["sleep", "infinity"]
