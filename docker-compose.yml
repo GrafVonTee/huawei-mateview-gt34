@@ -1,0 +1,17 @@
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.trainer
+    entrypoint: ""
+    volumes:
+      - ".:/workspace"
+    command: ["python", "run/toy_train.py"]
+
+  inference:
+    build:
+      context: .
+      dockerfile: Dockerfile.vllm
+    volumes:
+      - ".:/playground"
+    command: ["python", "run/toy_eval.py"]
